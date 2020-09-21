@@ -4,15 +4,16 @@
     <% @listings.each do |listing| %>
       <div class="col-md-3">
         <div class="thumbnail">
-          <%= image_tag(listing.image, :size=> "200x150") if listing.image.attached? %>
+          <%= link_to image_tag(listing.image, :size=> "200x150"), listing %>
           <div class="caption">
             <h3><%= listing.name %></h3>
             <p><%= number_to_currency(listing.price) %> </p>
             <p><%= "Ad by #{listing.user.name}" %> </p>     
             <br>    
-            <%= link_to 'Show', listing %>
-            <%= link_to 'Edit', edit_listing_path(listing) %>
-            <%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if (user_signed_in? && current_user==listing.user) %>
+              <%= link_to 'Edit', edit_listing_path(listing) %>
+              <%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
         </div>
       </div>
@@ -21,5 +22,6 @@
 </div>
 
 <br>
-
-<%= link_to 'New Listing', new_listing_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Listing', new_listing_path %>
+<% end %>
