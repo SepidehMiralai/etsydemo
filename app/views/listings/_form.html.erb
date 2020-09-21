@@ -1,7 +1,10 @@
 <%= form_with(model: listing, local: true) do |form| %>
   <% if listing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+      <h4><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h4>
 
       <ul>
         <% listing.errors.full_messages.each do |message| %>
@@ -35,3 +38,4 @@
     <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
