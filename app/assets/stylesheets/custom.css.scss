@@ -13,11 +13,12 @@ body {
 .navbar {
   background-color: #EFEFEB;
 }
-.navbar .navbar-nav >li > a {
+.navbar .navbar-nav > li > a {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bold;
-  color: #0192B5
+  color: #0192B5;
+  margin: 10px;
 }
 .center{
   text-align: center;
