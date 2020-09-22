@@ -19,6 +19,9 @@
       <form class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav navbar-right">
           <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "Manage Listings", seller_path, class: "nav_link"%>
+          </li> 
             <li class="nav-item">
             <%= link_to "Edit Profile", edit_user_registration_path, class: "nav_link"%>
           </li> 
