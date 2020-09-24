@@ -19,15 +19,27 @@
       <form class="form-inline my-2 my-lg-0">
         <ul class="navbar-nav navbar-right">
           <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Manage Listings", seller_path, class: "nav_link"%>
-          </li> 
-            <li class="nav-item">
-            <%= link_to "Edit Profile", edit_user_registration_path, class: "nav_link"%>
-          </li> 
-          <li class="nav-item">
-            <%= link_to "Sign Out", destroy_user_session_path, class: "nav_link", method: :delete %>
-          </li>
+            <div class="dropdown">
+              <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Seller Account
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li> <%= link_to "Manage Listings", seller_path, class: "nav_link"%> </li>
+                <li> <%= link_to "Sales History", sales_path, class: "nav_link"%> </li>
+              </ul>    
+            </div> 
+            &nbsp;   
+            <div class="dropdown">
+              <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.name %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li> <%= link_to "Purchase History", purchases_path, class: "nav_link"%> </li>
+                <li> <%= link_to "Edit Profile", edit_user_registration_path, class: "nav_link"%> </li>
+                <li> <%= link_to "Sign Out", destroy_user_session_path, class: "nav_link", method: :delete %> </li>
+              </ul>    
+            </div>   
+            
           <% else %>
             <li class="nav-item">
               <%= link_to "Sign Up", new_user_registration_path, class: "nav_link" %>
