@@ -1,35 +1,43 @@
 <table class="table table-bordered table-striped" >
-  <tr>
-    <th class="center"> Image </th>
-    <th class="center"> Name </th>
-    <th class="center"> Description </th>
-    <th class="center"> Price </th>
-    <th class="center"> Action </th>
-  </tr>
-  <% @listings.each do |listing| %>
+  <thead>
     <tr>
-    <td> <%=  image_tag(listing.image, :size=> "150x100") %></td>
-    <td> <%= listing.name %> </td>
-    <td> <%= listing.description %> </td>
-    <td> <%= number_to_currency(listing.price) %> </td>
-    <td> 
-    <div class="dropdown">
-      <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Action
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li> <%= link_to 'View', listing_path(listing) %> </li>
-        <li> <%= link_to 'Edit', edit_listing_path(listing) %> </li>
-        <li> <%= link_to 'Delete', listing, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
-      </ul>
-      
-    </div>     
-    </td>
+      <th class="center"> Image </th>
+      <th class="center"> Name </th>
+      <th class="center"> Description </th>
+      <th class="center"> Price </th>
+      <th class="center"> Action </th>
     </tr>
-  <%end %>
+  </thead>
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+      <td class="center"> <%=  image_tag(listing.image, :size=> "150x100") %></td>
+      <td class="center"> <%= listing.name %> </td>
+      <td class="center"> <%= listing.description %> </td>
+      <td class="center"> <%= number_to_currency(listing.price) %> </td>
+      <td class="center"> 
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Action
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <li class="dropdown-item"> <%= link_to 'View', listing_path(listing), class: "nav_link dropdown-linkcolor" %> </li>
+          <li class="dropdown-item"> <%= link_to 'Edit', edit_listing_path(listing), class: "nav_link dropdown-linkcolor" %> </li>
+          <li class="dropdown-item"> <%= link_to 'Delete', listing, class: "nav_link dropdown-linkcolor", method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+        </ul>
+      </div>     
+      </td>
+      </tr>
+    <%end %>
+  </tbody>
 </table>
             
 <br>
 <% if user_signed_in? %>
-  <%= link_to 'New Listing', new_listing_path %>
+  <%= link_to 'Add a new listing', new_listing_path, {:style=>'font-size: medium;'} %>
+  <br>
 <% end %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+

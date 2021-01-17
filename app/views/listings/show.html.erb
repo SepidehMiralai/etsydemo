@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <%= image_tag(@listing.image, :size=> "200x150") if @listing.image.attached? %>
+    <%= image_tag(@listing.image, :size=> "250x200") if @listing.image.attached? %>
   </div>
   <div class="col-md-6">
     <h3><%= @listing.name %></h3>  
@@ -8,7 +8,7 @@
     <p> <%= @listing.description %></p>
     <br>
     <div class="center">
-    <%= link_to "Buy it now", new_listing_order_path(@listing), class: "btn btn-primary" %>
+    <%= link_to "Buy it now", new_listing_order_path(@listing), class: "btn btn-primary", data: { no_turbolink: true } %>
     </div>
   </div>
 </div>
@@ -16,6 +16,8 @@
 
 
 <% if current_user == @listing.user %>
-  <%= link_to 'Edit', edit_listing_path(@listing) %> 
+  <%= link_to 'Edit', edit_listing_path(@listing), {:style=>'font-size: medium;'} %> 
 <% end %>
-<%= link_to 'Back', listings_path %>
+&nbsp;
+&nbsp;
+<%= link_to 'Back', seller_url, {:style=>'font-size: medium;'} %>

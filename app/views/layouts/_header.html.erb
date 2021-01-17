@@ -1,55 +1,58 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">EtsyDemo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">EtsyDemo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "About ", pages_about_path, class: "nav_link" %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "About ", pages_about_path, class: "nav_link" %>
+            &nbsp;
+          </li>
+          <li class="nav-item">
+            <%= link_to "Contact", pages_contact_path, class: "nav_link" %>
+          </li>
           &nbsp;
-        </li>
-        <li class="nav-item">
-          <%= link_to "Contact", pages_contact_path, class: "nav_link" %>
-        </li>
-        &nbsp;
-        
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <ul class="navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <div class="dropdown">
-              <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Seller Account
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li> <%= link_to "Manage Listings", seller_path, class: "nav_link"%> </li>
-                <li> <%= link_to "Sales History", sales_path, class: "nav_link"%> </li>
-              </ul>    
-            </div> 
-            &nbsp;   
-            <div class="dropdown">
-              <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= current_user.name %>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li> <%= link_to "Purchase History", purchases_path, class: "nav_link"%> </li>
-                <li> <%= link_to "Edit Profile", edit_user_registration_path, class: "nav_link"%> </li>
-                <li> <%= link_to "Sign Out", destroy_user_session_path, class: "nav_link", method: :delete %> </li>
-              </ul>    
-            </div>   
-            
-          <% else %>
-            <li class="nav-item">
-              <%= link_to "Sign Up", new_user_registration_path, class: "nav_link" %>
-            </li>
-            <li class="nav-item">
-            <%= link_to "Sign In", new_user_session_path, class: "nav_link"%>
-            </li>
-          <% end %>   
+          
         </ul>
-        
-      </form>
-    </div>
-  </nav>
+        <form class="form-inline my-2 my-lg-0">
+          <ul class="navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <div class="dropdown">
+                <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Seller Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li> <%= link_to "Manage Listings", seller_path, class: "nav_link dropdown-linkcolor" %> </li>
+                  <li> <%= link_to "Sales History", sales_path, class: "nav_link dropdown-linkcolor" %> </li>
+                </ul>    
+              </div> 
+              &nbsp;   
+              <div class="dropdown">
+                <a class="btn btn-info dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= current_user.name %>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li> <%= link_to "Purchase History", purchases_path, class: "nav_link dropdown-linkcolor"%> </li>
+                  <li> <%= link_to "Edit Profile", edit_user_registration_path, class: "nav_link dropdown-linkcolor"%> </li>
+                  <li> <%= link_to "Sign Out", destroy_user_session_path, class: "nav_link dropdown-linkcolor", method: :delete %> </li>
+                </ul>    
+              </div>   
+              
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Sign Up", new_user_registration_path, class: "nav_link" %>
+              </li>
+              <li class="nav-item">
+              <%= link_to "Sign In", new_user_session_path, class: "nav_link"%>
+              </li>
+            <% end %>   
+          </ul>
+          
+        </form>
+      </div>
+    </nav>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>

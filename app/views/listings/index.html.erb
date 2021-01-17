@@ -1,8 +1,6 @@
 <div class="jumbotron"
-  
-<h1> Handcraft items from around the world </h1>
-<h2> Discover one-of-a-kind-items </h2>
-  
+  <h1> Handcraft items from around the world </h1>
+  <h2> Discover one-of-a-kind-items </h2>
 </div>
 
 <div class="center">
@@ -24,5 +22,7 @@
 
 <br>
 <% if user_signed_in? %>
-  <%= link_to 'New Listing', new_listing_path %>
+  <%= link_to 'Add a new listing', new_listing_path, {:style=>'font-size: large;'} %>
+  <br>
 <% end %>
+
